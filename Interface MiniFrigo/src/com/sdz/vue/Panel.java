@@ -90,6 +90,14 @@ public class Panel extends JPanel {
         //Crétion du rectangle
         g.fillRect(8,335,364,183);
 
+        //Tracage des lignes blanche
+        g2d.setColor(Color.white);
+        g2d.drawLine(8,515-36,371,515-36);//5
+        g2d.drawLine(8,515-72,371,515-72);//10
+        g2d.drawLine(8,515-108,371,515-108);//15
+        g2d.drawLine(8,515-144,371,515-144);//20
+       // g2d.drawLine(8,515-150,371,515-150);//25
+
         //Set de la coleur pour le trait
         g2d.setColor(Color.red);
 
