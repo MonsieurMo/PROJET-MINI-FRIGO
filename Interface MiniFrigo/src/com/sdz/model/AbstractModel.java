@@ -27,17 +27,23 @@ public abstract class AbstractModel implements Observable {
 
     public abstract void getHum(String lecture);
 
+
+
+
+
+
+    /** Parties Observer */
+
     /** Liste des observer */
     private ArrayList<Observer> listObserver = new ArrayList<Observer>();
 
 
-    /** Parties Observer */
     //Implémentation du pattern observer
     public void addObserver(Observer obs) {
         this.listObserver.add(obs);
     }
 
-    /** Notify */
+    /** Partie Notification observer*/
     public void notifyObserverTemp(String str) {
         if(str.matches("^0[0-9]+"))
             str = str.substring(1, str.length());

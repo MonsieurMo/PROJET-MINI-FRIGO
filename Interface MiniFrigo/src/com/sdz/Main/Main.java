@@ -2,7 +2,7 @@ package com.sdz.Main;
 
 import com.sdz.controler.*;
 import com.sdz.model.*;
-import com.sdz.vue.Calculette;
+import com.sdz.vue.Vue;
 
 public class Main {
 
@@ -15,10 +15,10 @@ public class Main {
         AbstractControler controler = new Controler(mod);
 
         //Création de notre fenêtre avec le contrôleur en paramètre
-        Calculette calculette = new Calculette(controler);
+        Vue vue = new Vue(controler);
 
         //Ajout de la fenêtre comme observer de notre modèle
-        mod.addObserver(calculette);
+        mod.addObserver(vue);
 
         controler.lecture();
     }

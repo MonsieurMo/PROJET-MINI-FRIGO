@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class Calculette extends JFrame implements Observer {
+public class Vue extends JFrame implements Observer {
 
     private AbstractControler controler;
 
@@ -27,7 +27,9 @@ public class Calculette extends JFrame implements Observer {
     //Button
     private JButton update = new JButton("Update Température");
 
-    public Calculette(AbstractControler controler){
+
+    /**Constructeur */
+    public Vue(AbstractControler controler){
 
         //Creation de la fenetre
         this.setSize(700, 500);
@@ -76,6 +78,13 @@ public class Calculette extends JFrame implements Observer {
         temp30.setBounds(380,65,50,30);
         pan.add(temp30);
 
+        JLabel graph1 = new JLabel("Température (en °C)");
+        graph1.setFont(f2);
+        graph1.setBounds(8,48,150,30);
+        pan.add(graph1);
+
+
+
 
         //Text Field
         tempVouluField.setBounds(450,340,200,50);
@@ -100,6 +109,9 @@ public class Calculette extends JFrame implements Observer {
         //On rend la fenetre visible
         this.setVisible(true);
     }
+
+
+    /** Partie observer : Update */
 
     //Implémentation du pattern observer
     public void updateTempVoulu(String str)

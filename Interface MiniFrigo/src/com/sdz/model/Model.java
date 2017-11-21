@@ -7,6 +7,8 @@ public class Model extends AbstractModel {
         tab = new int[121];
     }
 
+
+    /** Special Setter */
     @Override
     public void setTabTemp(int temp) {
         //Update Tabtemp
@@ -42,6 +44,8 @@ public class Model extends AbstractModel {
 
     }
 
+
+    /** Special Getter*/
     @Override
     public void getTemp(String lecture) {
         int temp = 0;
