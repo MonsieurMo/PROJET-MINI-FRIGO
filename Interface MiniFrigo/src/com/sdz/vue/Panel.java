@@ -43,15 +43,15 @@ public class Panel extends JPanel {
         g2d.setStroke(s2);
 
         //Crétion du rectangle
-        g2d.fillRect(8,75,364,183);
+        g2d.fillRect(8,95,364,183);
 
         //Tracage des lignes blanche
         g2d.setColor(Color.white);
-        g2d.drawLine(8,255-30,371,255-30);//5
-        g2d.drawLine(8,255-60,371,255-60);//10
-        g2d.drawLine(8,255-90,371,255-90);//15
-        g2d.drawLine(8,255-120,371,255-120);//20
-        g2d.drawLine(8,255-150,371,255-150);//25
+        g2d.drawLine(8,275-30,371,275-30);//5
+        g2d.drawLine(8,275-60,371,275-60);//10
+        g2d.drawLine(8,275-90,371,275-90);//15
+        g2d.drawLine(8,275-120,371,275-120);//20
+        g2d.drawLine(8,275-150,371,275-150);//25
 
 
         //Set de la coleur pour le trait
@@ -61,8 +61,8 @@ public class Panel extends JPanel {
         //Graph 1 :
         for (int i=0;i<120;i++)
         {
-            comptY1 = 255-(tabTemp[i]*6);
-            comptY2 = 255-(tabTemp[i+1]*6);
+            comptY1 = 275-(tabTemp[i]*6);
+            comptY2 = 275-(tabTemp[i+1]*6);
 
             g2d.drawLine(comptX1,comptY1,comptX2,comptY2);
 
@@ -77,8 +77,8 @@ public class Panel extends JPanel {
         int comptX1 = 10;
         int comptX2 = 13;
 
-        int comptY1 = 450;
-        int comptY2 = 450;
+        int comptY1 = 515;
+        int comptY2 = 515;
 
         //Creation de la fomre 2D
         Graphics2D g2d = (Graphics2D)g.create();
@@ -88,7 +88,7 @@ public class Panel extends JPanel {
         g2d.setStroke(s1);
 
         //Crétion du rectangle
-        g.fillRect(8,270,364,183);
+        g.fillRect(8,335,364,183);
 
         //Set de la coleur pour le trait
         g2d.setColor(Color.red);

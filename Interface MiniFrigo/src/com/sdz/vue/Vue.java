@@ -32,7 +32,7 @@ public class Vue extends JFrame implements Observer {
     public Vue(AbstractControler controler){
 
         //Creation de la fenetre
-        this.setSize(700, 500);
+        this.setSize(700, 600);
         this.setTitle("Interface Frigo");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -63,24 +63,24 @@ public class Vue extends JFrame implements Observer {
 
         //Label graphique
         JLabel temp0 = new JLabel("0°C");
-        temp0.setBounds(380,237,50,30);
+        temp0.setBounds(380,257,50,30);
         pan.add(temp0);
 
         JLabel temp10 = new JLabel("+10°C");
-        temp10.setBounds(380,255-75,50,30);
+        temp10.setBounds(380,275-75,50,30);
         pan.add(temp10);
 
         JLabel temp20 = new JLabel("+20°C");
-        temp20.setBounds(380,255-135,50,30);
+        temp20.setBounds(380,275-135,50,30);
         pan.add(temp20);
 
         JLabel temp30 = new JLabel("+30°C");
-        temp30.setBounds(380,65,50,30);
+        temp30.setBounds(380,85,50,30);
         pan.add(temp30);
 
         JLabel graph1 = new JLabel("Température (en °C)");
         graph1.setFont(f2);
-        graph1.setBounds(8,48,150,30);
+        graph1.setBounds(8,68,150,30);
         pan.add(graph1);
 
 
