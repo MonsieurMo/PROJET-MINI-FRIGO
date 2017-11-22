@@ -9,10 +9,12 @@ import java.awt.*;
 public class Panel extends JPanel {
 
     int[] tabTemp;
+    int[] tabHum;
 
     public Panel()
     {
         tabTemp = new int[121];
+        tabHum = new int[121];
     }
 
     public void paintComponent(Graphics g)
@@ -96,7 +98,6 @@ public class Panel extends JPanel {
         g2d.drawLine(8,515-72,371,515-72);//10
         g2d.drawLine(8,515-108,371,515-108);//15
         g2d.drawLine(8,515-144,371,515-144);//20
-       // g2d.drawLine(8,515-150,371,515-150);//25
 
         //Set de la coleur pour le trait
         g2d.setColor(Color.red);
@@ -104,8 +105,8 @@ public class Panel extends JPanel {
         //Graph 1 :
         for (int i=0;i<120;i++)
         {
-            //comptY1 = 450-(tab[i]*6);
-            //comptY2 = 450-(tab[i+1]*6);
+            comptY1 = 515-(tabHum[i]*6);
+            comptY2 = 515-(tabHum[i+1]*6);
 
             g2d.drawLine(comptX1,comptY1,comptX2,comptY2);
 
