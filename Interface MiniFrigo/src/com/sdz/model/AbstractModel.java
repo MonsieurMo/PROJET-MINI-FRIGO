@@ -8,27 +8,28 @@ import java.util.ArrayList;
 public abstract class AbstractModel implements Observable {
 
     /** Variables */
-    public int temperature = 0;
-    public int humidite = 0;
+    public float temperature = 0;
+    public float temperatureExt = 0;
+    public float humidite = 0;
     public int temperatureVoulu = 0;
 
-    public int[] tab;
+    public int[] tabTemp;
+    public int[] tabHum;
 
     /** Methodes */
-    public abstract void setTempVoulu(int temp);
+    public abstract void reader(String str);
 
-    public abstract void setTemp(int temp);
+    public abstract void setTempVoulu(float temp);
 
-    public abstract void setTabTemp(int temp);
+    public abstract void setTemp(float temp);
 
-    public abstract void setHum(int hum);
+    public abstract void setTabTemp(float temp);
 
-    public abstract void getTemp(String lecture);
+    public abstract  void setTempExt(float temp);
 
-    public abstract void getHum(String lecture);
+    public abstract void setHum(float hum);
 
-
-
+    public abstract  void setTabHum(float hum);
 
 
 
@@ -72,6 +73,19 @@ public abstract class AbstractModel implements Observable {
 
         for(Observer obs : listObserver)
             obs.updateTab(tab);
+    }
+
+    public void notifyObserverTabHum(int[] tab) {
+        for(Observer obs : listObserver)
+            obs.updateTabHum(tab);
+    }
+
+    public void notifyObserverTempExt(String str) {
+        if(str.matches("^0[0-9]+"))
+            str = str.substring(1, str.length());
+
+        for(Observer obs : listObserver)
+            obs.updateTempExt(str);
     }
 
     public void removeObserver() {

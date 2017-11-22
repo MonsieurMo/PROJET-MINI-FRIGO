@@ -8,4 +8,6 @@ public interface Observable {
     public void notifyObserverTempVoulu(String str);
     public void notifyObserverHum(String str);
     public void notifyObserverTab(int[] tab);
+    public void notifyObserverTabHum(int[] tab);
+    public void notifyObserverTempExt(String str);
 }

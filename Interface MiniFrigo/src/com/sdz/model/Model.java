@@ -4,66 +4,120 @@ public class Model extends AbstractModel {
 
     public Model()
     {
-        tab = new int[121];
+        tabTemp = new int[121];
+        tabHum = new int[121];
+    }
+
+    public void reader(String str)
+    {
+        String Strs[] = str.split("-");
+        setTabTemp(Float.parseFloat(Strs[0]));
+        setTemp(Float.parseFloat(Strs[0]));
+        setTempExt(Float.parseFloat(Strs[1]));
+        setHum(Float.parseFloat(Strs[2]));
+        setTabHum(Float.parseFloat(Strs[2]));
+
     }
 
 
     /** Special Setter */
     @Override
-    public void setTabTemp(int temp) {
+    public void setTabTemp(float temp) {
+
+        //Arrondie
+        int arrondie = 0;
+        try {
+            arrondie = Math.round(temp);}
+        catch(Throwable th){}
+
+
         //Update Tabtemp
         for (int i=0;i<120;i++)
         {
-            tab[i] = tab[i+1];
+            tabTemp[i] = tabTemp[i+1];
         }
-        tab[120] = temp;
-        notifyObserverTab(tab);
+        tabTemp[120] = arrondie;
+        notifyObserverTab(tabTemp);
     }
 
     @Override
-    public void setTempVoulu(int temp) {
+    public void setTabHum(float hum) {
 
-        this.temperatureVoulu = temp;
-        notifyObserverTempVoulu(String.valueOf(this.temperatureVoulu));
+        //Arrondie
+        int arrondie = 0;
+        try {
+            arrondie = Math.round(hum);}
+        catch(Throwable th){}
+
+
+        //Update Tabtemp
+        for (int i=0;i<120;i++)
+        {
+            tabHum[i] = tabHum[i+1];
+        }
+        tabHum[120] = arrondie;
+        notifyObserverTabHum(tabHum);
+    }
+
+    @Override
+    public void setTempVoulu(float temp) {
+
+        //Arrondie
+        int arrondie = 0;
+        try {
+            arrondie = Math.round(temp);}
+        catch(Throwable th){}
+
+        this.temperatureVoulu = arrondie;
+        notifyObserverTempVoulu(Float.toString(this.temperatureVoulu));
 
     }
 
     @Override
-    public void setTemp(int temp) {
+    public void setTemp(float temp) {
+
+        //Arrondie
+        try {
+            temp = (Math.round(temp*10f)/10f);
+            System.out.println(temp);
+        }
+
+        catch(Throwable th){}
 
         this.temperature = temp;
-        notifyObserverTemp(String.valueOf(this.temperature));
+        notifyObserverTemp(Float.toString(this.temperature));
 
     }
 
     @Override
-    public void setHum(int hum) {
+    public void setTempExt(float temp) {
+
+        //Arrondie
+        try {
+            temp = (Math.round(temp*10f)/10f);
+            System.out.println(temp);
+        }
+
+        catch(Throwable th){}
+
+        this.temperatureExt = temp;
+        notifyObserverTempExt(Float.toString(this.temperatureExt));
+
+    }
+
+
+
+    @Override
+    public void setHum(float hum) {
+
+        //Arrondie
+        try {
+            hum = Math.round(hum*10f)/10f;}
+        catch(Throwable th){}
 
         this.humidite = hum;
         notifyObserverHum(String.valueOf(this.humidite));
 
     }
 
-
-    /** Special Getter*/
-    @Override
-    public void getTemp(String lecture) {
-        int temp = 0;
-
-        //Découpage de la string
-
-        this.temperature = temp;
-        //notifyObserver(String.valueOf(this.temperature));
-    }
-
-    @Override
-    public void getHum(String lecture) {
-        int humi = 0;
-
-        //Découpage de la string
-
-
-        this.humidite = humi;
-        //notifyObserver(String.valueOf(this.humidite));
-    }
 }

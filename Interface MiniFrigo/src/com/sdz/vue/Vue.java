@@ -17,9 +17,10 @@ public class Vue extends JFrame implements Observer {
     Panel pan;
 
     //Label
-    private JLabel Temp = new JLabel("Température : 18°C");
-    private JLabel Hum = new JLabel("Humidité : 15%");
-    private JLabel tempVoulu = new JLabel("Température désiré : 15°C");
+    private JLabel Temp = new JLabel("Température : 00.0°C");
+    private JLabel Hum = new JLabel("Humidité : 0.0%");
+    private JLabel TempExt = new JLabel("Température extérieur : 00.0°C");
+    private JLabel tempVoulu = new JLabel("Température désiré : 00.0°C");
 
     //TextField
     private JTextField tempVouluField = new JTextField();
@@ -45,7 +46,10 @@ public class Vue extends JFrame implements Observer {
         pan = new Panel();
         pan.setLayout(null);
         pan.setSize(800,600);
+        //pan.setForeground(Color.BLUE);
         this.setContentPane(pan);
+
+
 
         //Font
         Font f1 = new Font("f1",Font.BOLD,18);
@@ -56,7 +60,11 @@ public class Vue extends JFrame implements Observer {
         Temp.setFont(f1);
         pan.add(Temp);
 
-        Hum.setBounds(198,33,200,33);
+        TempExt.setBounds(215,33,300,30);
+        TempExt.setFont(f1);
+        pan.add(TempExt);
+
+        Hum.setBounds(505,33,200,33);
         Hum.setFont(f1);
         pan.add(Hum);
 
@@ -157,7 +165,7 @@ public class Vue extends JFrame implements Observer {
             public void actionPerformed(ActionEvent event){
 
                 //Action du bouton
-                controler.setTempVoulu(Integer.parseInt(tempVouluField.getText()));
+                controler.setTempVoulu(Float.parseFloat(tempVouluField.getText()));
             }
         });
 
@@ -204,6 +212,18 @@ public class Vue extends JFrame implements Observer {
     {
         pan.setTabTemp(tab);
         this.repaint();
+    }
+
+    public void updateTabHum(int[] tab)
+    {
+        pan.setTabHum(tab);
+        this.repaint();
+
+    }
+
+    public void updateTempExt(String str)
+    {
+        TempExt.setText("Température extérieur : " + str +"°C");
     }
 
 

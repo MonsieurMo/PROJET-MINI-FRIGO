@@ -19,6 +19,11 @@ public class Panel extends JPanel {
 
     public void paintComponent(Graphics g)
     {
+
+        g.drawRect(5,28,200,40);
+        g.drawRect(205,28,290,40);
+        g.drawRect(495,28,170,40);
+
         //Graph 1 :
         paintGraph1(g);
 
@@ -94,10 +99,10 @@ public class Panel extends JPanel {
 
         //Tracage des lignes blanche
         g2d.setColor(Color.white);
-        g2d.drawLine(8,515-36,371,515-36);//5
-        g2d.drawLine(8,515-72,371,515-72);//10
-        g2d.drawLine(8,515-108,371,515-108);//15
-        g2d.drawLine(8,515-144,371,515-144);//20
+        g2d.drawLine(8,515-32,371,515-32);
+        g2d.drawLine(8,515-72,371,515-72);
+        g2d.drawLine(8,515-108,371,515-108);
+        g2d.drawLine(8,515-144,371,515-144);
 
         //Set de la coleur pour le trait
         g2d.setColor(Color.red);
@@ -105,8 +110,8 @@ public class Panel extends JPanel {
         //Graph 1 :
         for (int i=0;i<120;i++)
         {
-            comptY1 = 515-(tabHum[i]*6);
-            comptY2 = 515-(tabHum[i+1]*6);
+            comptY1 = 515-(Math.round(tabHum[i]*1.8f));
+            comptY2 = 515-(Math.round(tabHum[i+1]*1.8f));
 
             g2d.drawLine(comptX1,comptY1,comptX2,comptY2);
 
@@ -119,6 +124,12 @@ public class Panel extends JPanel {
     public void setTabTemp(int[] tabTemp)
     {
         this.tabTemp = tabTemp;
+
+    }
+
+    public void setTabHum(int[] tabHum)
+    {
+        this.tabHum = tabHum;
 
     }
 

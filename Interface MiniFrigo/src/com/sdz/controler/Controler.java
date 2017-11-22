@@ -18,9 +18,19 @@ public class Controler extends AbstractControler implements SerialPortEventListe
         super(cal);
     }
 
-    public void setTempVoulu(int nombre)
+    public void setTempVoulu(float nombre)
     {
         mod.setTempVoulu(nombre);
+
+
+        //Envoie de la température voulue
+        String str = Integer.toString(Math.round(nombre));
+        byte [] outputArray = str.getBytes( );
+        try {
+            output.write(outputArray,0,outputArray.length);
+        }
+        catch(Throwable th) {}
+
     }
 
     /** Lecture arduino */
@@ -49,7 +59,8 @@ public class Controler extends AbstractControler implements SerialPortEventListe
             "COM5", // Windows
             "COM6", // Windows
             "COM7", // Windows
-            "COM8", // Windows
+            "COM8",
+            "COM9",// Windows
     };
     /**
      * BufferedReader contenant les displays de l'arduino
@@ -121,9 +132,11 @@ public class Controler extends AbstractControler implements SerialPortEventListe
         if (oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
             try {
                 String inputLine=input.readLine();
-                mod.setTemp(Integer.parseInt(inputLine));
-                mod.setTabTemp(Integer.parseInt(inputLine));
-                System.out.println(inputLine);
+
+                /** Lecture du display */
+                mod.reader(inputLine);
+
+
             } catch (Exception e) {
                 System.err.println(e.toString());
             }

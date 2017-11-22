@@ -13,7 +13,7 @@ public abstract class AbstractControler {
 
     }
 
-    public abstract void setTempVoulu(int nombre);
+    public abstract void setTempVoulu(float nombre);
 
     public abstract void lecture();
 }
